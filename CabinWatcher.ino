@@ -176,7 +176,7 @@ void loop() {
     byte bytes[4];
   } ds18b20_temp;
 
-  // The temperature, humidity, and pressure from the BME280 sensora
+  // The temperature, humidity, and pressure from the BME280 sensors
   union {
     float flotari;
     byte  bytes[4];
@@ -225,16 +225,16 @@ void loop() {
     // Search the wire for address
     if(sensors.getAddress(tempDeviceAddress, i)){
 		
-		// Output the device ID
-		Serial.print("Temperature for device: ");
-		Serial.print(i,DEC);
+      // Output the device ID
+      Serial.print("Temperature for device: ");
+      Serial.print(i,DEC);
 
-    // Print the data
-    ds18b20_temp.flotari = sensors.getTempC(tempDeviceAddress);
-    Serial.print(" Temp C: ");
-    Serial.println(ds18b20_temp.flotari);
-    modem.write(ds18b20_temp.bytes, sizeof(ds18b20_temp));
-    } 	
+      // Print the data
+      ds18b20_temp.flotari = sensors.getTempC(tempDeviceAddress);
+      Serial.print(" Temp C: ");
+      Serial.println(ds18b20_temp.flotari);
+      modem.write(ds18b20_temp.bytes, sizeof(ds18b20_temp));
+    }
   }  
   
   
